@@ -1,0 +1,139 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+.Frame {
+    display: table;
+    height: 100%;
+    width: 100%;
+}
+.Row {
+    display: table-row;
+    height: 1px;
+}
+.Row.Expand {
+    height: 100%;
+}
+
+footer {
+    height: 100px;
+    color: #fff;
+    background: #343A40;
+    text-align: center;
+    padding: 35px;
+    position: relative;
+    width: 100%;
+    bottom: 0px;
+    
+}
+
+
+.container-funcionarios{
+    height: 80.5%; /*provisório*/
+    width: 400px;
+    border-radius: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+.container-funcionario {
+    border: 1px solid #343A40;
+    padding: 10px;
+}
+
+.container-projetos{
+    height: 88%; /*provisório*/
+    width: 400px;
+    border-radius: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 20px;
+}
+
+.container-projeto {
+    border: 1px solid #343A40;
+    padding: 20px;
+}
+
+.titulo{
+    background-color: #343A40;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    font-size: 35px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    
+}
+
+.form-tabela{
+    border: 1px solid #343A40;
+}
+
+.form-novo {
+    padding: 10px;
+    
+}
+
+.form-i {
+    margin-right: 100px;
+    background: #009018;
+    padding: 10px;
+    color: #fff;
+    border-radius: 25px;
+    margin-left: 10px
+}
+
+.tabela-controle > a{
+    padding: 3px;
+    widows: 10px;
+    color: #343A40;
+}
+
+.tabela-controle > a:hover{
+    color: forestgreen;
+}
+
+.tabela-controle-delete > a{
+    padding: 3px;
+    widows: 10px;
+    color: #343A40;
+}
+
+.tabela-controle-delete > a:hover{
+    color: red;
+}
+
+.btn-width {
+    width: 48%;
+    margin-left: 1%;
+}
+
+.btn-width-voltar {
+    width: 98%;
+    margin-left: 1%;
+    margin-right: 1%;
+}
+
+.modal-header {
+	background-color: #db2537;
+}
+
+.modal-title {
+	color: white;
+}
+
+button.close {
+	color: #fff;
+}
+
+button.close:hover {
+	color: #fff	;
+}
+
+@media screen and (max-width: 500px){
+    .form-tabela{
+        overflow-x: scroll;
+    }
+}

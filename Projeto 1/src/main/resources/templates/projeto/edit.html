@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar projeto</title>
+
+    <link rel="stylesheet" th:href="@{/css/estilo.css}">
+	<link rel="stylesheet" th:href="@{/bootstrap-4.5.2/dist/css/bootstrap.css}">
+	<link rel="stylesheet" th:href="@{/fontawesome-5.14.0/css/all.css}">
+</head>
+<body class="Frame">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<a class="navbar-brand" th:href="@{/}">Portfólios</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+		    <span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+		    <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/}">Home<span class="sr-only">(atual)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" th:href="@{/projeto/list}">Projetos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/funcionario/list}">Funcionários</a>
+                </li>
+            </ul>
+		</div>
+    </nav>
+
+    <div class="container container-projetos">
+        <div class="titulo">Editar Projeto</div>
+        <div class="container container-projeto">
+            <form th:action="@{/projeto/save}" th:object="${projeto}" method="POST"> 
+                <div class="form-group">
+                    <label>Código</label>
+                    <input class="form-control" type="number" th:field="${projeto.id}" readonly>
+                </div>
+
+                <div class="form-group">
+                    <label>Nome</label>
+                    <input class="form-control" type="text" th:field="${projeto.nome}" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Descrição</label>
+                    <input class="form-control" type="text" th:field="${projeto.descricao}" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Status</label>
+                    <select class="form-control" th:field="${projeto.status}" required>
+                        <option value="Em análise">Em análise</option>
+                        <option value="Análise realizada">Análise realizada</option>
+                        <option value="Análise aprovada">Análise aprovada</option>
+                        <option value="Iniciado">Iniciado</option>
+                        <option value="Planejamento">Planejamento</option>
+                        <option value="Em andamento">Em andamento</option>
+                        <option value="Encerrado">Encerrado</option>
+                        <option value="Cancelado">Cancelado</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Risco</label>
+                    <select class="form-control" th:field="${projeto.risco}" required>
+                        <option value="Baixo risco">Baixo risco</option>
+                        <option value="Médio risco">Médio risco</option>
+                        <option value="Alto risco">Alto risco</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Orçamento</label>
+                    <input type="number" class="form-control" th:field="${projeto.orcamento}" required placeholder="R$ 0,00">
+                </div>
+
+                <div class="form-group">
+                    <label>Data inicial</label>
+                    <input type="date" class="form-control" th:field="${projeto.dataInicio}" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Data prevista</label>
+                    <input type="date" class="form-control" th:field="${projeto.dataPrevisao}" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Data final</label>
+                    <input type="date" class="form-control" th:field="${projeto.dataFinal}" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Gerente</label>
+                    <select class="form-control" th:field="${projeto.gerente.id}">
+                        <option th:each="funcionario : ${funcionarios}" th:value="${funcionario.id}" th:text="${funcionario.nome}"></option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Funcionários</label>
+                    <select class="form-control" type="text" th:field="${projeto.funcionariosP}" multiple="multiple">
+                        <option th:each="pf : ${funcionariosP}" th:value="${pf.id}" th:text="${pf}"></option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <button class="btn btn-secondary btn-width" type="button" onclick="window.location.href = '../list'">Cancelar</button>
+                    <button class="btn btn-success btn-width" type="submit"><i class="fa fa-save"></i> Salvar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <label for="class lbl-footer">
+            <i class="far fa-copyright" aria-hidden="true"></i> Todos os direitos reservados.
+        </label>
+    </footer>
+
+    <script th:src="@{/js/jquery-3.5.1.min.js}"></script>
+    <script th:src="@{/bootstrap-4.5.2/dist/js/bootstrap.js}"></script>
+    <script th:src="@{/js.js}"></script>
+</body>
+</html>
