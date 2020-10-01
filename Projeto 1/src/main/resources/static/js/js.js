@@ -12,9 +12,18 @@ const deletar = function(path){
 	
 }
 
-const editar = function(path){
-	let id = $(path.id);
-
-	document.location.href = '/' + path + '/edit' + id
+const editarPagina = function(path, id){
+	
+	if(id !== 0) {
+		window.location.href = '/' + path + '/edit/' + id
+	}
 }
 
+const visualizarPagina = function(path, id){
+	
+	if(id !== 0) {
+		window.location.href = '/' + path + '/view/' + id
+	}
+}
+
+	

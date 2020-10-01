@@ -15,7 +15,6 @@ import br.com.codificando.repository.ProjetoRepository;
 @Controller
 public class ProjetoController {
 	
-	
 	@Autowired
 	ProjetoRepository projetoRepository;
 	
@@ -36,16 +35,6 @@ public class ProjetoController {
 		model.addAttribute("funcionariosP", funcionarioRepository.findByCargoNot("Gerente"));
 		
 		return "projeto/add";	
-	}
-	
-	@PostMapping("/projeto/save")
-	public String saveProjeto(Projeto projeto) {
-		try {
-			projetoRepository.save(projeto);	
-		} catch (Exception e) {
-			System.out.println("Erro: " + e.getMessage());
-		}
-		return "redirect:/projeto/view/" + projeto.getId();
 	}
 	
 	@GetMapping("/projeto/view/{id}")
@@ -74,5 +63,13 @@ public class ProjetoController {
 		return "redirect:/projeto/list";
 	}	
 	
-	
+	@PostMapping("/projeto/save")
+	public String saveProjeto(Projeto projeto) {
+		try {
+			projetoRepository.save(projeto);	
+		} catch (Exception e) {
+			System.out.println("Erro: " + e.getMessage());
+		}
+		return "redirect:/projeto/view/" + projeto.getId();
+	}
 }

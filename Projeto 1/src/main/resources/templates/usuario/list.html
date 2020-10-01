@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Funcionários</title>
+    <title>Usuários</title>
 
     <link rel="stylesheet" th:href="@{/css/estilo.css}">
 	<link rel="stylesheet" th:href="@{/bootstrap-4.5.2/dist/css/bootstrap.css}">
-	<link rel="stylesheet" th:href="@{/fontawesome-5.14.0/css/all.css}">
+    <link rel="stylesheet" th:href="@{/fontawesome-5.14.0/css/all.css}">
 </head>
 <body class="Frame">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -23,46 +23,47 @@
                 <li class="nav-item">
                     <a class="nav-link" th:href="@{/projeto/list}">Projetos</a>
                 </li>
-                <li class="nav-item active">
-                    <a class="nav-link" th:href="@{#}">Funcionários</a>
-                </li>
                 <li class="nav-item">
-					<a class="nav-link" th:href="@{/usuario/list}">Usuários</a>
-				</li>
+                    <a class="nav-link" th:href="@{/funcionario/list}">Funcionários</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="@{#}">Usuários</a>
+                </li>
             </ul>
 		</div>
     </nav>
 
-    <div class="Row Expand container container-funcionarios">
-        <div class="titulo">Funcionários</div>
-        
+    <div class="Row Expand container container-usuarios" >
+        <div class="titulo">Usuários</div>
         <div class="form-tabela">
             <table class="table table-striped">
                 <thead class="thead-dark">
                     <tr>
-                        <th>Cód.</th>
-                        <th>Nome</th>
-                        <th colspan="4">Cargo</th>
+                    	<th>Nome</th>
+                        <th>Login</th>
+                        <th>Senha</th>
+                        <th colspan="4">CPF</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr th:each="funcionario : ${funcionarios}">
-                        <td th:text="${funcionario.id}"></td>
-                        <td th:text="${funcionario.nome}"></td>
-                        <td th:text="${funcionario.cargo}"></td>
+                    <tr th:each="usuario : ${usuarios}">
+                    	<td th:text="${usuario.nome}"></td>
+                        <td th:text="${usuario.login}"></td>
+                        <td th:text="${usuario.senha}"></td>
+                        <td th:text="${usuario.cpf}"></td>
                         <td class="tabela-controle">
                             <button type="button" class="btn btn-outline-primary"
-                            	th:onclick="|visualizarPagina('funcionario', ${funcionario.id})|">
+                            	th:onclick="|visualizarPagina('usuario', ${usuario.id})|">
                             	<i class="fas fa-eye"></i>
                         </td>
                         <td class="tabela-controle">
                             <button type="button" class="btn btn-outline-success"
-                            	th:onclick="|editarPagina('funcionario', ${funcionario.id})|">
+                            	th:onclick="|editarPagina('usuario', ${usuario.id})|">
                             	<i class="fas fa-edit"></i>
                         </td>
-                        <td class="tabela-controle-delete">
+                        <td class="tabela-controle">
                             <button type="button" class="btn btn-outline-danger"
-                            	th:onclick="|showModalDeletar(${funcionario.id})|">
+                            	th:onclick="|showModalDeletar(${usuario.id})|">
                             	<i class="fas fa-trash"></i>
                             </button>
                         </td>
@@ -70,23 +71,23 @@
                 </tbody>
             </table>
             <div class="form-novo">
-                <a th:href="@{/funcionario/add}"
+                <a th:href="@{/usuario/add}"
                 class="form-a">
-                    <i class="form-i fas fa-user-plus"> Novo</i>
+                    <i class="form-i fas fa-user-plus">Novo</i>
                 </a>
             </div>
         </div>
     </div>
     
-     <div id="modalDeletar" class="modal fade" role="dialog">
+    <div id="modalDeletar" class="modal fade" role="dialog">
   		<div class="modal-dialog">
 		    <div class="modal-content">
 		      	<div class="modal-header">
-		      	<h4 class="modal-title">Atenção !</h4>
+		      		<h4 class="modal-title">Atenção !</h4>
 		        	<button type="button" class="close" data-dismiss="modal">&times;</button>
 		      	</div>
 		      	<div class="modal-body">
-		        	<p>Você realmente deseja apagar o funcionário ?</p>
+		        	<p>Você realmente deseja apagar o usuário ?</p>
 		      	</div>
 		      	<div class="modal-footer">
 		      		<input type="number" id="id_deletar" hidden></input>
@@ -94,7 +95,7 @@
 			        	<i class="fa fa-ban"></i>  Cancelar
 			        </button>
 			        <button type="button" class="btn btn-danger"
-			        	th:onclick="deletar('funcionario')">
+			        	th:onclick="deletar('usuario')">
 			        	<i class="fa fa-trash"></i>  Apagar
 			        </button>
 		      	</div>

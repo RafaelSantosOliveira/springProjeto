@@ -2,10 +2,11 @@
 <html lang="pt-br" xmlns:th="http://www.thymeleaf.org">	
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Portfólios</title>
+	<link rel="stylesheet" th:href="@{/css/estilo.css}">
 	<link rel="stylesheet" th:href="@{/bootstrap-4.5.2/dist/css/bootstrap.min.css}">
 	<link rel="stylesheet" th:href="@{/fontawesome-5.14.0/css/all.css}">
-	<link rel="stylesheet" th:href="@{/css/estilo.css}">
 </head>
 <body class="Frame">
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -16,18 +17,21 @@
 		<div class="collapse navbar-collapse" id="navbarNav">
 		    <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">Home<span class="sr-only">(atual)</span></a>
+                    <a class="nav-link active" th:href="@{/}">Home<span class="sr-only">(atual)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" th:href="@{/projeto/list}">Projetos</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" th:href="@{/funcionario/list}">Funcionários</a>
-                </li>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/usuario/list}">Usuários</a>
+				</li>
             </ul>	
 		</div>
 	</nav>
-	<div class="Row container" style="height: 91%;"></div>
+	<div class="Row Expand container"></div>
 
 	<footer>
         <label for="class lbl-footer">

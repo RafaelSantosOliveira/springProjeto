@@ -7,7 +7,7 @@
 
     <link rel="stylesheet" th:href="@{/css/estilo.css}">
 	<link rel="stylesheet" th:href="@{/bootstrap-4.5.2/dist/css/bootstrap.css}">
-	<link rel="stylesheet" th:href="@{/fontawesome-5.14.0/css/all.css}">
+    <link rel="stylesheet" th:href="@{/fontawesome-5.14.0/css/all.css}">
 </head>
 <body class="Frame">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -26,14 +26,20 @@
                 <li class="nav-item">
                     <a class="nav-link" th:href="@{/funcionario/list}">Funcionários</a>
                 </li>
+                <li class="nav-item">
+					<a class="nav-link" th:href="@{/usuario/list}">Usuários</a>
+				</li>
             </ul>
 		</div>
     </nav>
 
-    <div class="Row Expand container container-funcionarios">
+    <div class="Row Expand container container-projetos" >
         <div class="titulo">Projetos</div>
-        
-        <div class="form-tabela">
+            <select id="selectProjetos" class="form-control">
+                <option value="" disabled selected>Procure seu projeto</option>
+                <option th:each="projeto : ${projetos}" th:value="${projeto.id}" th:text="${projeto.nome}"></option>
+            </select>
+        <div class="form-tabela-projetos">
             <table class="table table-striped">
                 <thead class="thead-dark">
                     <tr>
@@ -41,8 +47,8 @@
                         <th>Status</th>
                         <th>Risco</th>
                         <th>Orçamento</th>
-                        <th>Data Início</th>
-                        <th>Data Previsão</th>
+                        <th>Data Inicial</th>
+                        <th>Data Prevista</th>
                         <th>Data Final</th>
                         <th colspan="4">Gerente</th>
                     </tr>
@@ -58,16 +64,16 @@
                         <td th:text="${#dates.format(projeto.dataFinal, 'dd/MM/yyyy')}"></td>
                         <td th:text="${projeto.gerente.nome}"></td>
                         <td class="tabela-controle">
-                            <a th:href="@{'/projeto/view/' + ${projeto.id}}">
-                                <i class="fas fa-eye" aria-hidden="true" ></i>
-                            </a>
+                            <button type="button" class="btn btn-outline-primary"
+                            	th:onclick="|visualizarPagina('projeto', ${projeto.id})|">
+                            	<i class="fas fa-eye"></i>
                         </td>
                         <td class="tabela-controle">
-                            <a th:href="@{'/projeto/edit/' + ${projeto.id}}">
-                                <i class="fas fa-edit" aria-hidden="true"></i>
-                            </a>
+                            <button type="button" class="btn btn-outline-success"
+                            	th:onclick="|editarPagina('projeto', ${projeto.id})|">
+                            	<i class="fas fa-edit"></i>
                         </td>
-                        <td class="tabela-controle-delete">
+                        <td class="tabela-controle">
                             <button type="button" class="btn btn-outline-danger"
                             	th:onclick="|showModalDeletar(${projeto.id})|">
                             	<i class="fas fa-trash"></i>

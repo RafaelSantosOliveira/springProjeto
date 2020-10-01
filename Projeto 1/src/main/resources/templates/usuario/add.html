@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar funcionário</title>
+    <title>Adicionar usuário</title>
 
     <link rel="stylesheet" th:href="@{/css/estilo.css}">
 	<link rel="stylesheet" th:href="@{/bootstrap-4.5.2/dist/css/bootstrap.css}">
 	<link rel="stylesheet" th:href="@{/fontawesome-5.14.0/css/all.css}">
 </head>
-<body>
+<body class="Frame">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 		<a class="navbar-brand" th:href="@{/}">Portfólios</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,45 +23,46 @@
                 <li class="nav-item">
                     <a class="nav-link" th:href="@{/projeto/list}">Projetos</a>
                 </li>
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" th:href="@{/funcionario/list}">Funcionários</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item active">
 					<a class="nav-link" th:href="@{/usuario/list}">Usuários</a>
 				</li>
             </ul>
 		</div>
     </nav>
+    
+    
 
-    <div class="container container-funcionarios">
-        <div class="titulo">Editar funcionário</div>
-        <div class="container container-funcionario">
-            <form th:action="@{/funcionario/save}" th:object="${funcionario}" method="POST"> 
-                <div class="form-group">
-                    <label>Código</label>
-                    <input class="form-control" type="number" th:field="${funcionario.id}" readonly>
-                </div>
-
+    <div class="container container-usuarios">
+        <div class="titulo">Adicionar usuário</div>
+        <div class="container container-usuario">
+            <form th:action="@{/usuario/save}" th:object="${usuario}" method="POST"> 
                 <div class="form-group">
                     <label>Nome</label>
-                    <input class="form-control" type="text" th:field="${funcionario.nome}" required>
+                    <input class="form-control" type="text" th:field="*{nome}" required>
                 </div>
 
                 <div class="form-group">
-                    <label>Cargo</label>
-                    <select class="form-control" th:field="${funcionario.cargo}" required>
-                        <option value="Contador">Contador</option>
-                        <option value="Engenheiro">Engenheiro</option>
-                        <option value="Financeiro">Financeiro</option>
-                        <option value="Gerente">Gerente</option>
-                        <option value="TI">TI</option>
-                    </select>
+                    <label>Login</label>
+                    <input class="form-control" type="text" th:field="*{login}" required>
                 </div>
 
                 <div class="form-group">
-                    <button class="btn btn-secondary btn-width" type="button" onclick="window.location.href = '../list'">Cancelar</button>
+                    <label>Senha</label>
+                    <input class="form-control" type="text" th:field="*{senha}" required>
+                </div>
+
+                <div class="form-group">
+                    <label>CPF</label>
+                    <input class="form-control" type="text" th:field="*{cpf}" required>
+                </div>
+
+                <div class="form-group">
+                    <button class="btn btn-secondary btn-width" type="button" onclick="window.location.href = './list'">Cancelar</button>
                     <button class="btn btn-success btn-width" type="submit"><i class="fa fa-save"></i> Salvar</button>
-                </div>
+                </div>  
             </form>
         </div>
     </div>

@@ -1,7 +1,5 @@
 package br.com.codificando.controller;
 
-import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
@@ -10,9 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import br.com.codificando.model.Funcionario;
-import br.com.codificando.model.Projeto;
 import br.com.codificando.repository.FuncionarioRepository;
-import br.com.codificando.repository.ProjetoRepository;
 
 import org.springframework.web.bind.annotation.PostMapping;
 

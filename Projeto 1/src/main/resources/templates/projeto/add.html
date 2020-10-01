@@ -26,20 +26,17 @@
                 <li class="nav-item">
                     <a class="nav-link" th:href="@{/funcionario/list}">Funcionários</a>
                 </li>
+                <li class="nav-item">
+					<a class="nav-link" th:href="@{/usuario/list}">Usuários</a>
+				</li>
             </ul>
 		</div>
     </nav>
-    
-    
 
     <div class="container container-projetos">
         <div class="titulo">Adicionar projeto</div>
         <div class="container container-projeto">
             <form th:action="@{/projeto/save}" th:object="${projeto}" method="POST"> 
-                <div class="form-group">
-                    <label>Código</label>
-                    <input class="form-control" type="number" th:field="*{id}" readonly>
-                </div>
 
                 <div class="form-group">
                     <label>Nome</label>
@@ -108,8 +105,6 @@
                     </select>
                 </div>
                 
-                
-
                 <div class="form-group">
                     <button class="btn btn-secondary btn-width" type="button" onclick="window.location.href = './list'">Cancelar</button>
                     <button class="btn btn-success btn-width" type="submit"><i class="fa fa-save"></i> Salvar</button>
