@@ -93,14 +93,14 @@
 
                 <div class="form-group">
                     <label>Gerente</label>
-                    <select class="form-control" th:field="*{gerente.id}">
+                    <select class="form-control" th:field="*{gerente.id}" required>
                         <option th:each="funcionario : ${funcionarios}" th:value="${funcionario.id}" th:text="${funcionario.nome}"></option>
                     </select>
                 </div>
                 
                 <div class="form-group">
                     <label>Funcionários</label>
-                    <select class="form-control" th:field="*{funcionariosP}" multiple>
+                    <select class="form-control" th:field="*{funcionariosP}" multiple required>
                         <option th:each="funcionarioP : ${funcionariosP}" th:value="${funcionarioP.id}" th:text="${funcionarioP.nome}"></option>
                     </select>
                 </div>

@@ -17,11 +17,16 @@ html, body {
     height: 100%;
 }
 
+.Row.Expand.container-login {
+    width: 50%;
+    margin-top: 5%;
+} 
+
 .navbar{
     width: 100%;
 }
 
-footer {
+footer { 
     height: 70px;
     color: #fff;
     background: #343A40;
@@ -41,7 +46,7 @@ footer {
 }
 
 .container-funcionarios{
-    height: 100%; /*provis�rio*/
+    height: 100%; 
     width: 400px;
     border-radius: 10px;
     margin-top: 20px;
@@ -55,7 +60,7 @@ footer {
 }
 
 .container-projetos{
-    height: 88%; /*provis�rio*/
+    height: 88%; 
     width: 400px;
     border-radius: 10px;
     margin-top: 20px;
@@ -69,7 +74,7 @@ footer {
 }
 
 .container-usuarios{
-    height: 88%; /*provis�rio*/
+    height: 88%; 
     width: 400px;
     border-radius: 10px;
     margin-top: 20px;
@@ -148,6 +153,8 @@ button.close:hover {
 	color: #fff	;
 }
 
+
+
 @media screen and (max-width: 1000px){
     .form-tabela-projetos{
         overflow-x: scroll;
@@ -159,15 +166,27 @@ button.close:hover {
     div.form-tabela-projetos{
         display: none;
     }
+    div.form-tabela-projetos-mobile{
+        display: grid;
+    }
     footer {
         height: 10vmax;
         padding: 5.5vmin;
         margin-top: 36px;   
     }
+    .class-form-mobile{
+        display: grid;
+    }
 }
 
 @media screen and (min-width: 1000px){
     #selectProjetos{
+        display: none;
+    }
+    div.form-tabela-projetos-mobile{
+        display: none;
+    }
+    .form-novo-mobile{
         display: none;
     }
 }

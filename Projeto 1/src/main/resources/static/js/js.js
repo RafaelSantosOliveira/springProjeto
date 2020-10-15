@@ -13,17 +13,13 @@ const deletar = function(path){
 }
 
 const editarPagina = function(path, id){
-	
 	if(id !== 0) {
 		window.location.href = '/' + path + '/edit/' + id
 	}
 }
 
 const visualizarPagina = function(path, id){
-	
 	if(id !== 0) {
 		window.location.href = '/' + path + '/view/' + id
 	}
 }
-
-	

@@ -39,6 +39,7 @@
                 <option value="" disabled selected>Procure seu projeto</option>
                 <option th:each="projeto : ${projetos}" th:value="${projeto.id}" th:text="${projeto.nome}"></option>
             </select>
+       
         <div class="form-tabela-projetos">
             <table class="table table-striped">
                 <thead class="thead-dark">
@@ -67,11 +68,13 @@
                             <button type="button" class="btn btn-outline-primary"
                             	th:onclick="|visualizarPagina('projeto', ${projeto.id})|">
                             	<i class="fas fa-eye"></i>
+                            </button>
                         </td>
                         <td class="tabela-controle">
                             <button type="button" class="btn btn-outline-success"
                             	th:onclick="|editarPagina('projeto', ${projeto.id})|">
                             	<i class="fas fa-edit"></i>
+                            </button>
                         </td>
                         <td class="tabela-controle">
                             <button type="button" class="btn btn-outline-danger"
@@ -90,6 +93,88 @@
             </div>
         </div>
     </div>
+    
+    <div class="form-tabela-projetos-mobile">
+           <table class="table table-striped">
+               <thead class="thead-dark">
+               		<tr>
+                    	<th>Nome</th>
+                    </tr>
+               </thead>
+               <tbody>
+                   <tr th:each="projeto : ${projetos}">
+                       <td th:text="${projeto.nome}"></td>
+                   </tr>
+               </tbody>
+               <thead class="thead-dark">
+              		<tr>
+                   	<th>Status</th>
+                   </tr>
+               </thead>
+               <tbody>
+                   <tr th:each="projeto : ${projetos}">
+                       <td th:text="${projeto.status}"></td>
+                   </tr>
+               </tbody>
+               <thead class="thead-dark">
+                   <tr>
+                       <th>Risco</th>
+                   </tr>
+               </thead>
+               <tbody>
+                   <tr th:each="projeto : ${projetos}">
+                       <td th:text="${projeto.risco}"></td>
+                   </tr>
+               </tbody>
+               <thead class="thead-dark">
+                   <tr>
+                       <th>Orçamento</th>
+                   </tr>
+               </thead>
+               <tbody>
+                   <tr th:each="projeto : ${projetos}">
+                       <td th:text="${'R$' + #numbers.formatDecimal(projeto.orcamento, 1, 'DEFAULT', 2, 'DEFAULT')}"></td>
+                   </tr>   
+               </tbody>
+               <thead class="thead-dark">
+                   <tr>
+                       <th>Data Inicial</th>
+                   </tr>
+               </thead>
+               <tbody>
+                   <tr th:each="projeto : ${projetos}">
+                       <td th:text="${#dates.format(projeto.dataInicio, 'dd/MM/yyyy')}"></td>
+               </tbody>
+               <thead class="thead-dark">
+                       <tr>
+                       <th>Data Prevista</th>
+                   </tr>
+               </thead>
+               <tbody>
+                   <tr th:each="projeto : ${projetos}">
+                       <td th:text="${#dates.format(projeto.dataPrevisao, 'dd/MM/yyyy')}"></td>
+               </tbody>
+               <thead class="thead-dark">
+                   <tr>
+                       <th>Data Final</th>
+                   </tr>
+               </thead>
+               <tbody>
+                   <tr th:each="projeto : ${projetos}">
+                       <td th:text="${#dates.format(projeto.dataFinal, 'dd/MM/yyyy')}"></td>
+                   </tr>
+               </tbody>
+          </table>
+    </div>
+
+    <div class="form-novo-mobile">
+        <a th:href="@{/projeto/add}"
+        class="form-a">
+            <i class="form-i fas fa-user-plus">Novo</i>
+        </a>
+    </div>
+    
+    
     
     <div id="modalDeletar" class="modal fade" role="dialog">
   		<div class="modal-dialog">
@@ -124,5 +209,10 @@
     <script th:src="@{/js/jquery-3.5.1.min.js}"></script>
     <script th:src="@{/bootstrap-4.5.2/dist/js/bootstrap.js}"></script>
     <script th:src="@{/js/js.js}"></script>
+    <script type="text/javascript">
+
+    
+    
+    </script>
 </body>
 </html>
